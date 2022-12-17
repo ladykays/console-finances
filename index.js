@@ -127,7 +127,7 @@ var finances = [
     var averageChange = 0;
     averageChange = totalChange/totalMonths;
     // Print the result to console
-    console.log("Average Change: $" + averageChange);
+    console.log("Average Change: $" + averageChange.toFixed(2)); //'toFixed(2)' means print the averageChange to the nearest hundreth
 
 // Calculate the greatest increase in profits and decrease in losses (date and amount) over the entire period.
   // Declare variables 
