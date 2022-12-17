@@ -130,9 +130,25 @@ var finances = [
     console.log("Average Change: $" + averageChange);
 
 // Calculate the greatest increase in profits (date and amount) over the entire period.
-  // Declare a variable, greatestProfitIncrease
+  // Declare variables 
+  var greatestProfitIncrease = 0;
+  var increaseMonth;
+
   // Use a for loop to iterate over the elements in finances, for each, calculate the differnce between the current and previous amounts to get the profit increase for that period. Use a comparison operator to keep track of the greatest profit increase. If a greater profit increase is found, replace the former with the greatest and continue the process until the end of the array.
+  for (i = 0; i < finances.length; i++) {
+    var currentMonth = finances[i][0]; //declare varaible and set it to the first element of the current element of finances
+    var currentAmount = finances[i][1]; //declare varaible and set it to the second element of the current element of finances
+    var previousAmount = 0;
+    var profitIncrease = currentAmount - previousAmount; //calculate the differnce and store the result in a variable
+    if (profitIncrease > greatestProfitIncrease) {
+      greatestProfitIncrease = profitIncrease;
+      increaseMonth = currentMonth;
+    }
+    else previousAmount = currentAmount;
+  }
+
   // Print greatestProfitIncrease amount with its corresponding date 
+  console.log("Greatest Increase in Profits: " + increaseMonth + " ($" + greatestProfitIncrease + ")"); 
 
 // Calculate the greatest decrease in losses (date and amount) over the entire period.
   // Declare a variable, greatestLoss
