@@ -92,6 +92,7 @@ var finances = [
 // Calculaate the total number of months included in the dataset.
   // Initialize a variable totalMonths
   var totalMonths = 0;
+
   // Use a for loop to iterate over the elements in the array and on each iteration increase totalMonths by 1
   for (i = 0; i < finances.length; i++ ) {
     totalMonths++;
@@ -100,22 +101,33 @@ var finances = [
   console.log("Total Months: " + totalMonths);
 
 
-
 // Calculate the net total amount of Profit/Losses over the entire period.
   // Initialize a variable netTotal
+  var netTotal = 0;
+
   // Use a for loop to iterate over the second index of each array item, adding them together and store the result in netTotal
+  for (i = 0; i < finances.length; i++) {
+    netTotal += finances[i][1];
+  }
   // Print the result to console
+  console.log("Total: $" + netTotal);
 
 // Calculate the average of the **changes** in Profit/Losses over the entire period.
+  // Calculate the total change in profits/losses from month to month using a for loop
+    // Declare a variable, totalChange
+    var totalChange = 0;
 
-  // Calculate the total change in profits from month to month using a for loop
-    // DEclare a variable, totalChange
-    // Use a for loop to iterate over the elements in 'finances' array and calculate the total change
-      // totalChange = current value - previous value
-
+    // Use a for loop to iterate over the elements in 'finances' array and calculate the total profit change
+    for (i = 1; i < finances.length; i++) {
+      totalChange += finances[i][1] - finances[i-1][1]; //iterates over the elements in the 'finances' array, starting from the second element i-1 and on each iteration, calculate the difference between the current element value and the previous element value. totalChange = current value - previous value
+    }
+      
   // Calculate the average change
     // Average change = total change / total months
+    var averageChange = 0;
+    averageChange = totalChange/totalMonths;
     // Print the result to console
+    console.log("Average Change: $" + averageChange);
 
 // Calculate the greatest increase in profits (date and amount) over the entire period.
   // Declare a variable, greatestProfitIncrease
