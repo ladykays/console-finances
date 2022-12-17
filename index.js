@@ -89,11 +89,17 @@ var finances = [
 ];
 
 
-// PSEUDOCODE
 // Calculaate the total number of months included in the dataset.
   // Initialize a variable totalMonths
+  var totalMonths = 0;
   // Use a for loop to iterate over the elements in the array and on each iteration increase totalMonths by 1
+  for (i = 0; i < finances.length; i++ ) {
+    totalMonths++;
+  }
   // Print the result to console
+  console.log("Total Months: " + totalMonths);
+
+
 
 // Calculate the net total amount of Profit/Losses over the entire period.
   // Initialize a variable netTotal
