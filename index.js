@@ -147,14 +147,14 @@ var finances = [
       increaseMonth = currentMonth; //set increaseMonth to currentMonth
     }
     else previousAmount = currentAmount;
-    if (currentProfitLoss < greatestLossesDecrease) {
-      greatestLossesDecrease = currentProfitLoss;
-      decreaseMonth = currentMonth;
+    if (currentProfitLoss < greatestLossesDecrease) { //if profitloss for the current month is less than the greatest decrease in losses seen so far...
+      greatestLossesDecrease = currentProfitLoss; //update the greatest losses decrease to the current profit loss and...
+      decreaseMonth = currentMonth; //set decreaseMonth to currentMonth
     }
     else previousAmount = currentAmount
   }
 
   // Print greatestProfitIncrease amount with its corresponding date 
   console.log("Greatest Increase in Profits: " + increaseMonth + " ($" + greatestProfitIncrease + ")"); 
-  console.log("Greatest Decrease in Profits: " +decreaseMonth + " ($" + greatestLossesDecrease + ")");
+  console.log("Greatest Decrease in Profits: " + decreaseMonth + " ($" + greatestLossesDecrease + ")");
 
