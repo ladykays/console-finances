@@ -98,6 +98,8 @@ var finances = [
     totalMonths++;
   }
   // Print the result to console
+  console.log("Financial Analysis");
+  console.log("-------------------------")
   console.log("Total Months: " + totalMonths);
 
 
@@ -121,20 +123,22 @@ var finances = [
     for (var i = 1; i < finances.length; i++) {
       totalChange += finances[i][1] - finances[i-1][1]; //iterates over the elements in the 'finances' array, starting from the second element i-1 and on each iteration, calculate the difference between the current element value and the previous element value. totalChange = current value - previous value
     }
+    //console.log("Total Change = " + totalChange)
       
   // Calculate the average change
     // Average change = total change / total months
-    var averageChange = 0;
-    averageChange = totalChange/totalMonths;
+    /*var averageChange = 0;
+    averageChange = totalChange/totalMonths;*/
+    var averageChange = totalChange / (finances.length-1);
     // Print the result to console
     console.log("Average Change: $" + averageChange.toFixed(2)); //'toFixed(2)' means print the averageChange to the nearest hundreth
 
 // Calculate the greatest increase in profits and decrease in losses (date and amount) over the entire period.
   // Declare variables 
   var greatestProfitIncrease = 0; //used to track the greatest increase in profit seen so far
-  var increaseMonth; //used to store the month in which the greatest increase in profit occured
+  var increaseMonth = 0; //used to store the month in which the greatest increase in profit occured
   var greatestLossesDecrease = 0; //used to track the greatest decrease in losses seen so far
-  var decreaseMonth; //used to store the month in which the greatest decrease in losses occured
+  var decreaseMonth = 0; //used to store the month in which the greatest decrease in losses occured
 
   // Use a for loop to iterate over the elements in finances, for each, calculate the differnce between the current and previous amounts to get the profit increase or losses decrease for that period. Use a comparison operator to keep track of the greatest profit increase or losses decrease. If a greater profit increase is found, replace the former with the greatest and continue the process until the end of the array.
   for (var i = 0; i < finances.length; i++) {
