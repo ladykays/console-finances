@@ -133,32 +133,29 @@ var finances = [
     // Print the result to console
     console.log("Average Change: $" + averageChange.toFixed(2)); //'toFixed(2)' means print the averageChange to the nearest hundreth
 
-// Calculate the greatest increase in profits and decrease in losses (date and amount) over the entire period.
-  // Declare variables 
-  var greatestProfitIncrease = 0; //used to track the greatest increase in profit seen so far
-  var increaseMonth = 0; //used to store the month in which the greatest increase in profit occured
-  var greatestLossesDecrease = 0; //used to track the greatest decrease in losses seen so far
-  var decreaseMonth = 0; //used to store the month in which the greatest decrease in losses occured
 
-  // Use a for loop to iterate over the elements in finances, for each, calculate the differnce between the current and previous amounts to get the profit increase or losses decrease for that period. Use a comparison operator to keep track of the greatest profit increase or losses decrease. If a greater profit increase is found, replace the former with the greatest and continue the process until the end of the array.
-  for (var i = 0; i < finances.length; i++) {
-    var currentMonth = finances[i][0]; //declare varaible and set it to the first element of the current element of finances
-    var currentAmount = finances[i][1]; //declare varaible and set it to the second element of the current element of finances
-    var previousAmount = 0; //used to store profit or loss of the previous month
-    var currentProfitLoss = currentAmount - previousAmount; //calculate the differnce and store the result in a variable. This represents the profit or loss for the current month
-    if (currentProfitLoss > greatestProfitIncrease) { //if profitloss for the current month is greater than the greatest increase in profit seen so far...
-      greatestProfitIncrease = currentProfitLoss; //update the greatest profit increase to the current profit loss and...
-      increaseMonth = currentMonth; //set increaseMonth to currentMonth
+  // Calculate the greatest increase in profits and decrease in losses (date and amount) over the entire period.
+    //Variable Declearations
+    var greatestIncrease = 0;
+    var greatestIncreaseDate = "";
+    var greatestDecrease = 0;
+    var greatestDecreaseDate = "";
+
+    //Iterate through the array and calculate the profit increase or decrease by subtracting the previous month's profit from the current month's
+
+    for (i = 1; i < finances.length; i++) {
+      var currentAmount = finances[i][1];
+      var previousAmount = finances[i-1][1];
+      var currentDate = finances[i][0];
+      var profitIncrease = currentAmount - previousAmount;
+      if (profitIncrease > greatestIncrease) {
+        greatestIncrease = profitIncrease; //set greatest increase to the value of profit increase if condition is satisfied
+        greatestIncreaseDate = currentDate; //set greatest increase date to the current date
+      } else previousAmount = currentAmount; 
+      if (profitIncrease < greatestDecrease) {
+        greatestDecrease = profitIncrease;  //set greatest decrease to the value of profit increase if condition is satisfied
+        greatestDecreaseDate = currentDate; //set greatest decrease date to the current date
+      } else previousAmount = currentAmount;
     }
-    else previousAmount = currentAmount;
-    if (currentProfitLoss < greatestLossesDecrease) { //if profitloss for the current month is less than the greatest decrease in losses seen so far...
-      greatestLossesDecrease = currentProfitLoss; //update the greatest losses decrease to the current profit loss and...
-      decreaseMonth = currentMonth; //set decreaseMonth to currentMonth
-    }
-    else previousAmount = currentAmount;
-  }
-
-  // Print greatestProfitIncrease amount with its corresponding date 
-  console.log("Greatest Increase in Profits: " + increaseMonth + " ($" + greatestProfitIncrease + ")"); 
-  console.log("Greatest Decrease in Profits: " + decreaseMonth + " ($" + greatestLossesDecrease + ")");
-
+    console.log("Greatest Increase in Profits: " + greatestIncreaseDate + " ($" + greatestIncrease + ")");
+    console.log("Greatest Decrease in Profits: " + greatestDecreaseDate + " ($" + greatestDecrease + ")");
